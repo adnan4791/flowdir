@@ -323,15 +323,16 @@ void flowdirection(int nx, int ny) {
 
 void simpandata(char *fn) {
     FILE *fp;
-    int buffersize = 5*4096;
+    int buffersize = 4;//5*4096;
     char *buffer = (char *) malloc(buffersize*sizeof(char));
     char *nama_file=fn;
     fp = fopen(nama_file,"w");
     for(int y=0;y<nrows;y++) {
         for(int x=0;x<ncols;x++) {
-            sprintf(&(buffer[x*10]),"%d, ",direction[y][x]);
+            sprintf(&(buffer[0]),"%d, ",direction[y][x]);
             fputs(buffer,fp);
         }
+        fputs("\n",fp);
         //fputs(buffer,fp);
         //puts(buffer);
     }
